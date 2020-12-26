@@ -27,23 +27,26 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-    //Background Video
-        video1=findViewById(R.id.bgvid1);
+        //Background Video
+        video1 = findViewById(R.id.bgvid1);
 
-        String path ="android.resource://com.codemaster.nsstreasurehunt/"+R.raw.bgvd1;
+        String path = "android.resource://com.codemaster.nsstreasurehunt/" + R.raw.bgvd1;
         Uri u = Uri.parse(path);
         video1.setVideoURI(u);
         video1.start();
 
-        video1.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-            @Override
-            public void onPrepared(MediaPlayer mediaPlayer) {
-                mediaPlayer.setLooping(true);
-
-
+        video1.setOnPreparedListener(mediaPlayer -> {
+            float videoRatio = mediaPlayer.getVideoWidth() / (float) mediaPlayer.getVideoHeight();
+            float screenRatio = video1.getWidth() / (float)
+                    video1.getHeight();
+            float scaleX = videoRatio / screenRatio;
+            if (scaleX >= 1f) {
+                video1.setScaleX(scaleX);
+            } else {
+                video1.setScaleY(1f / scaleX);
             }
+            mediaPlayer.setLooping(true);
         });
-
 
 
         //initialization
@@ -78,7 +81,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onPause();
     }
 
-    protected void OnTesting(){
+    protected void OnTesting() {
         video1.stopPlayback();
         super.onDestroy();
     }
