@@ -5,7 +5,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
+    android:gravity="fill"
     android:orientation="vertical"
     android:windowFullscreen="true"
     tools:context=".LoginActivity">
@@ -13,75 +13,72 @@
     <VideoView
         android:id="@+id/bgvid1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content" />
 
-    <RelativeLayout
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/sign_in"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:layout_centerVertical="true"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        tools:ignore="UnknownId" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView1"
+        android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="center"
+        android:text="@string/lets_get_started"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/mobileNumberText"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true">
+        android:layout_below="@+id/textView2"
+        android:paddingHorizontal="30dp"
+        android:hint="@string/mobile_number"
+        android:textColorHint="@color/black"
+        android:background="@drawable/textinput"
+        app:boxStrokeColor="@color/black"
+        app:hintTextColor="@color/colorGray">
 
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:text="@string/sign_in"
-            android:textColor="@color/white"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            tools:ignore="UnknownId" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textView1"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_gravity="center"
-            android:text="@string/lets_get_started"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/mobileNumberText"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/mobileNumberTextInput"
             android:layout_width="match_parent"
+            android:theme="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textView2"
-            android:hint="@string/mobile_number"
-            android:paddingHorizontal="30dp"
-            android:layout_marginTop="30dp"
-            android:textColorHint="@color/white"
-            app:boxStrokeColor="@color/white"
-            app:hintTextColor="@color/white">
+            android:background="@drawable/textinput"
+            android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/mobileNumberTextInput"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <Button
-            android:id="@+id/sentOTPBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/mobileNumberText"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="start"
-            android:layout_marginStart="48dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="48dp"
-            android:layout_marginBottom="64dp"
-            android:text="@string/send_otp"
-            android:textColor="@color/white"
-            app:backgroundTint="@color/purple_500" />
-    </RelativeLayout>
+    <Button
+        android:id="@+id/sentOTPBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mobileNumberText"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="start"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="64dp"
+        android:text="@string/send_otp"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/purple_500" />
 
     <ProgressBar
         android:id="@+id/loading"

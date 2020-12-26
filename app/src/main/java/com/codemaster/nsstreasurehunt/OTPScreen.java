@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -31,6 +32,7 @@ public class OTPScreen extends AppCompatActivity {
     FirebaseAuth mAuth;
     String verificationCodeBySystem;
     String phoneNumberStr;
+    ImageView treshunt,nsslogo;
     Button verifyBtn;
     PinView OTPCodePinView;
     ProgressBar progressBar;
@@ -43,7 +45,13 @@ public class OTPScreen extends AppCompatActivity {
         verifyBtn = findViewById(R.id.verifyBtn);
         OTPCodePinView = findViewById(R.id.pinView);
         progressBar = findViewById(R.id.progressBar);
+        treshunt = findViewById(R.id.thunt);
+        nsslogo = findViewById(R.id.nsslogo);
 
+        //Animation
+        treshunt.animate().translationYBy(-100).setDuration(2000).setStartDelay(2000);
+        nsslogo.animate().translationYBy(-100).setDuration(2000).setStartDelay(2000);
+        nsslogo.animate().alphaBy(1f).setDuration(2000).setStartDelay(2000);
         //get intent values
         phoneNumberStr = getIntent().getStringExtra("PhoneNumber");
 

@@ -18,7 +18,8 @@
     <string name="user_name">User Name</string>
     <string name="college">College</string>
     <string name="create">Create</string>
-    <string name="verify_your_mobile">Verify your mobile</string>
+    <string name="mobile">MOBILE NUBMER</string>
+    <string name="verify_your_mobile">VERIFICATION</string>
     <string name="enter_your_otp_code_here">Enter your OTP code here</string>
     <string name="didn_t_receive_an_otp">Didn\'t receive an OTP?</string>
     <string name="resend_otp">Resend OTP</string>
