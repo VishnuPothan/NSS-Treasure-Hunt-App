@@ -27,29 +27,14 @@ public class HomeScreen extends AppCompatActivity {
     Button startBtn;
     WaitMessage waitMessage;
     ProgressBar progressBar;
-    VideoView video1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
 
-        //Background Video
-        video1=findViewById(R.id.bgvid1);
 
-        String path ="android.resource://com.codemaster.nsstreasurehunt/"+R.raw.bgvd1;
-        Uri u = Uri.parse(path);
-        video1.setVideoURI(u);
-        video1.start();
-
-        video1.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-            @Override
-            public void onPrepared(MediaPlayer mediaPlayer) {
-                mediaPlayer.setLooping(true);
-
-
-            }
-        });
 
 
         //firebase initialize

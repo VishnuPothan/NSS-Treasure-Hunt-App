@@ -9,6 +9,7 @@
     android:paddingTop="30dp"
     android:paddingRight="25dp"
     android:paddingBottom="30dp"
+    android:background="@drawable/quizbg"
     android:windowFullscreen="true"
     tools:context=".QuizScreen">
 
@@ -59,6 +60,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/answerText"
             android:layout_width="match_parent"
+            android:alpha="0.5"
+            android:background="@drawable/textinput"
             android:layout_height="wrap_content"
             android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -68,9 +71,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="@string/submit"
-        app:backgroundTint="@color/purple_500" />
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="152dp"
+        android:textColor="@color/black"
+        android:background="@drawable/goldbutton"
+        android:text="@string/submit" />
 
     <ProgressBar
         android:id="@+id/progressBar"
