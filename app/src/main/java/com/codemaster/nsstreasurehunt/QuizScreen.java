@@ -152,13 +152,14 @@ public class QuizScreen extends AppCompatActivity {
 
     //answer check function
     private void checkAnswer() {
-        String answerStr = answerText.getText().toString().trim();
+        String answerStr = answerText.getText().toString().toLowerCase().trim();
+
 
         if (answerStr.equals(questionDetails.getAnswer())) {
             OnGoingDetails onGoingDetails = new OnGoingDetails(String.valueOf(currQno), ServerValue.TIMESTAMP);
             currQno++;
             mDatabase.child("ongoing").child(uid).setValue(onGoingDetails).addOnSuccessListener(aVoid -> {
-                if (currQno == 20) {
+                if (currQno == 21) {
                     Intent finishScreenIntent = new Intent(getApplicationContext(), FinishScreen.class);
                     startActivity(finishScreenIntent);
                     finish();

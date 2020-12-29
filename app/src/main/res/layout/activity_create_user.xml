@@ -10,6 +10,7 @@
     android:paddingTop="30dp"
     android:paddingRight="25dp"
     android:paddingBottom="30dp"
+    android:background="@drawable/otpbg"
     android:windowFullscreen="true"
     tools:context=".CreateUser">
 
@@ -18,19 +19,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
+        android:fontFamily="sans-serif-black"
         android:layout_centerHorizontal="true"
         android:text="@string/create_account"
         android:textColor="@color/black"
-        android:textSize="30sp" />
+        android:textSize="25sp" />
 
     <TextView
         android:id="@+id/text_view2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/text_view1"
+        android:layout_above="@+id/text_view1"
+        android:layout_alignTop="@+id/text_view1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginBottom="-63dp"
         android:text="@string/create_your_account_to_continue"
         android:textColor="@color/colorGray"
         android:textSize="14sp" />
@@ -38,8 +41,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/createBtn"
         android:layout_below="@+id/text_view2"
+        android:layout_alignParentBottom="true"
         android:gravity="center_vertical"
         android:orientation="vertical">
 
@@ -57,6 +60,7 @@
                 android:id="@+id/userNameText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/textinput1"
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -72,6 +76,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/collegeText"
                 android:layout_width="match_parent"
+                android:background="@drawable/textinput1"
                 android:layout_height="wrap_content"
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -88,21 +93,39 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/emailText"
                 android:layout_width="match_parent"
+                android:background="@drawable/textinput1"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <Button
+                android:id="@+id/createBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/create"
+                app:backgroundTint="@color/purple_700" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+
     </LinearLayout>
 
-    <Button
-        android:id="@+id/createBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:text="@string/create"
-        app:backgroundTint="@color/purple_500" />
+
 
     <ProgressBar
         android:id="@+id/progressBar"

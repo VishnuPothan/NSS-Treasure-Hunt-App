@@ -10,14 +10,44 @@
     android:paddingRight="25dp"
     android:paddingBottom="30dp"
     android:windowFullscreen="true"
+    android:background="@color/black"
     tools:context=".FinishScreen">
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/puravedi"
+        android:layout_width="382dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/text_view1"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="4dp"
+        android:paddingLeft="40dp"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/vedi">
+
+    </com.airbnb.lottie.LottieAnimationView>
+
     <TextView
-        android:id="@+id/text_view1"
+        android:id="@+id/congrats"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/thank_you_for_you_r_participation"
-        android:textColor="@color/black"
-        android:textSize="20sp" />
+        android:fontFamily="sans-serif-black"
+        android:layout_centerHorizontal="true"
+        android:alpha="0"
+        android:textColor="@color/gold"
+        android:textSize="30sp"/>
+    <TextView
+        android:id="@+id/thanks1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/thanks"
+        android:layout_below="@+id/congrats"
+        android:alpha="0"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/gold"
+        android:textSize="20sp"/>
 
 </RelativeLayout>

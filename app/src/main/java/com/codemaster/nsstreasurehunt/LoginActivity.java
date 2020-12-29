@@ -8,6 +8,7 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.VideoView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,7 +20,7 @@ public class LoginActivity extends AppCompatActivity {
 
     TextInputEditText mobileNumberTextInput;
     Button sendOTPBtn;
-    VideoView video1;
+    TextView signin,blwtxt;
 
 
     @Override
@@ -27,22 +28,16 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-    //Background Video
-        video1=findViewById(R.id.bgvid1);
+    //Background text
+        signin=findViewById(R.id.textView1);
+        blwtxt=findViewById(R.id.textView2);
 
-        String path ="android.resource://com.codemaster.nsstreasurehunt/"+R.raw.bgvd1;
-        Uri u = Uri.parse(path);
-        video1.setVideoURI(u);
-        video1.start();
-
-        video1.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-            @Override
-            public void onPrepared(MediaPlayer mediaPlayer) {
-                mediaPlayer.setLooping(true);
+        signin.animate().translationY(-100).setDuration(100).setStartDelay(150);
+        blwtxt.animate().translationY(-100).setDuration(100).setStartDelay(150);
+        signin.animate().alphaBy(1F).setDuration(500).setStartDelay(300);
+        blwtxt.animate().alphaBy(1F).setDuration(500).setStartDelay(300);
 
 
-            }
-        });
 
 
 
@@ -67,19 +62,5 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    protected void OnResume() {
-        video1.resume();
-        super.onResume();
 
-    }
-
-    protected void OnPause() {
-        video1.suspend();
-        super.onPause();
-    }
-
-    protected void OnTesting(){
-        video1.stopPlayback();
-        super.onDestroy();
-    }
 }
