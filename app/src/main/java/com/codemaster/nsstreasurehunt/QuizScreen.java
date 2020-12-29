@@ -36,6 +36,7 @@ public class QuizScreen extends AppCompatActivity {
     ProgressBar progressBar;
     String uid;
     int currQno;
+    boolean hintSta = false;
     QuestionDetails questionDetails;
     ValueEventListener valueEventListener;
 
@@ -128,10 +129,17 @@ public class QuizScreen extends AppCompatActivity {
                         // Load the image using Picasso
                         hintImg.setVisibility(View.VISIBLE);
                         Picasso.get().load(questionDetails.getImg()).into(hintImg);
-                        Toast.makeText(getApplicationContext(), "New hint Published!!!", Toast.LENGTH_SHORT).show();
                     } else {
                         hintImg.setVisibility(View.GONE);
                         Toast.makeText(getApplicationContext(), "Hint currently not published for this question, check back later", Toast.LENGTH_SHORT).show();
+                    }
+                    if (hintSta) {
+                        if (questionDetails.isImgAvl()) {
+                            Toast.makeText(getApplicationContext(), "New hint Published!!!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Hint currently not published for this question, check back later", Toast.LENGTH_SHORT).show();
+                        }
+                        hintSta = false;
                     }
                     progressBar.setVisibility(View.GONE);
                 }
@@ -147,6 +155,7 @@ public class QuizScreen extends AppCompatActivity {
 
     //hint fetch function
     private void hintFetch() {
+        hintSta = true;
         questionFetch(currQno);
     }
 
