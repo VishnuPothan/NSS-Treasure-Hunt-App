@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.chaos.view.PinView;
@@ -32,10 +33,13 @@ public class OTPScreen extends AppCompatActivity {
     FirebaseAuth mAuth;
     String verificationCodeBySystem;
     String phoneNumberStr;
-    ImageView treshunt,nsslogo;
+    ImageView treshunt, nsslogo;
     Button verifyBtn;
     PinView OTPCodePinView;
     ProgressBar progressBar;
+    TextView resendOTP;
+    boolean sentOTP = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +51,7 @@ public class OTPScreen extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
         treshunt = findViewById(R.id.thunt);
         nsslogo = findViewById(R.id.nsslogo);
+        resendOTP = findViewById(R.id.resendOTP);
 
         //Animation
         treshunt.animate().translationYBy(-100).setDuration(2000).setStartDelay(2000);
@@ -70,6 +75,16 @@ public class OTPScreen extends AppCompatActivity {
             }
             progressBar.setVisibility(View.VISIBLE);
             verifyCode(code);
+        });
+
+        //for resent OTP
+        resendOTP.setOnClickListener(v -> {
+            if (!sentOTP) {
+                sendVerificationCode(phoneNumberStr);
+            } else {
+                String messStr = "OTP Already send to" + phoneNumberStr + "please check your phone number";
+                Toast.makeText(OTPScreen.this, messStr, Toast.LENGTH_SHORT).show();
+            }
         });
     }
 
@@ -115,6 +130,7 @@ public class OTPScreen extends AppCompatActivity {
                     });
                     startActivity(mainIntent);
                 } else {
+                    Log.i("here", "New user...");
                     Intent createAccountIntent = new Intent(getApplicationContext(), CreateUser.class);
                     createAccountIntent.putExtra("PhoneNumber", phoneNumberStr);
                     startActivity(createAccountIntent);
@@ -124,7 +140,8 @@ public class OTPScreen extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Toast.makeText(OTPScreen.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                sentOTP = false;
             }
         });
     }
@@ -145,6 +162,7 @@ public class OTPScreen extends AppCompatActivity {
         public void onCodeSent(@NonNull String s, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
             super.onCodeSent(s, forceResendingToken);
             verificationCodeBySystem = s;
+            Toast.makeText(OTPScreen.this, "OTP Send", Toast.LENGTH_SHORT).show();
         }
 
         @Override
@@ -159,7 +177,7 @@ public class OTPScreen extends AppCompatActivity {
         @Override
         public void onVerificationFailed(FirebaseException e) {
             Toast.makeText(OTPScreen.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-            Log.i("here",e.getMessage());
+            Log.i("here", e.getMessage());
         }
     };
 }

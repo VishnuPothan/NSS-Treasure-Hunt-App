@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/appz_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NSSTreasureHunt">
-        <activity android:name=".DevScreen"></activity>
+        <activity android:name=".DevScreen" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".FinishScreen" />
         <activity android:name=".QuizScreen" />

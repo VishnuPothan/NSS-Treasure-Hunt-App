@@ -75,6 +75,7 @@
         android:layout_marginBottom="152dp"
         android:textColor="@color/black"
         android:background="@drawable/goldbutton"
+        app:backgroundTint="@color/gold"
         android:text="@string/submit" />
 
     <ProgressBar
