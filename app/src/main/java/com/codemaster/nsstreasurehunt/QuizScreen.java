@@ -152,7 +152,7 @@ public class QuizScreen extends AppCompatActivity {
 
     //answer check function
     private void checkAnswer() {
-        String answerStr = answerText.getText().toString().trim();
+        String answerStr = answerText.getText().toString().trim().toLowerCase();
 
         if (answerStr.equals(questionDetails.getAnswer())) {
             OnGoingDetails onGoingDetails = new OnGoingDetails(String.valueOf(currQno), ServerValue.TIMESTAMP);
